@@ -1,5 +1,8 @@
 <?php
     require 'vendor/autoload.php';
+    namespace Lukaswhite\FeedWriter;
+
+    use Lukaswhite\FeedWriter\RSS2;
     $feed = new RSS2( );
 
     $channel = $feed->addChannel( );
