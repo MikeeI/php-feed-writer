@@ -1,4 +1,5 @@
 <?php
+    require 'vendor/autoload.php';
     $feed = new RSS2( );
 
     $channel = $feed->addChannel( );
