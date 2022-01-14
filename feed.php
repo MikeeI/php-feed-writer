@@ -19,7 +19,7 @@
 
     $json_decoded = json_decode($json);
     foreach($json_decoded as $element){
-        var_dump($element);
+        var_dump($element->duration_ms);
         echo "\n";
     }
     //var_dump($json_decoded);
