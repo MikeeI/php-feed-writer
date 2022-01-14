@@ -6,7 +6,7 @@
     //$BEARER = getenv("BEARER");
     $BEARER  = "BQD8THbQQI8yT2OXbWB_qDfY3PIVtPAfHZJxbvB1PmimvxjzVebUzmYccgYJp5T1Y2OUH7xksOCDelma47d2xQGCfC8Fli1lMkoLSeP3BunohVMNGR3nPrmIAGauXhcIQZMXov8D6EYcHZek";
 
-    $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=50');
+    $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=3');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
        'Accept: application/json',
