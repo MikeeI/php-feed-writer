@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: environment
-      run: |
-        echo "BEARER=${{ secrets.BEARER }}" >> $GITHUB_ENV
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
