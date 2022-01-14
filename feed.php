@@ -19,7 +19,8 @@
 
     $json_decoded = json_decode($json);
     foreach($json_decoded as $element){
-        echo $element->items;
+        var_dump($element);
+        echo "\n";
     }
     //var_dump($json_decoded);
 
