@@ -12,17 +12,9 @@
     "require": {
         "php": ">=7.0.0"
     },
-    "require-dev": {
-        "phpunit/phpunit": "7.0",
-        "phpunit/php-code-coverage": "^6.0"
-    },
     "autoload": {
         "psr-4": {
-            "Lukaswhite\\FeedWriter\\": "src/",
-            "Lukaswhite\\FeedWriter\\Tests\\": "tests/"
+            "Lukaswhite\\FeedWriter\\": "src/"
         }
-    },
-    "scripts": {
-        "test": "phpunit"
     }
 }
