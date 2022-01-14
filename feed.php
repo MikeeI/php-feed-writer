@@ -40,13 +40,6 @@
         ->ttl( 60 )
         ->lastBuildDate( new \DateTime( '2016-03-10 02:00' ) );
 
-    $channel->addCategory()
-        ->term('Technology');
-
-    $channel->addCategory()
-        ->term('Sports')
-        ->children('Football', 'Soccer');
-
     $channel->addItem( )
         ->title( 'Shake Shake Shake Your Spices' )
         ->author( 'John Doe' )
