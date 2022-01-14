@@ -8,6 +8,7 @@
     $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=50');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+       'Accept: application/json',
        'Content-Type: application/json',
        'Authorization: Bearer ' . $BEARER
        ));
