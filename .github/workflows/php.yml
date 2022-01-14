@@ -13,11 +13,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: environment
       run: |
-        echo "export ENV=DEV" > ~/.bashrc
-    - name: get_env
-      run: | 
-        source ~/.bashrc
-        echo $ENV
+        echo "BEARER=${{ secrets.BEARER }}" >> $GITHUB_ENV
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
