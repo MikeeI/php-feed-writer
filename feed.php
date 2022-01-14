@@ -1,6 +1,7 @@
 <?php
-    require 'vendor/autoload.php';
     namespace Lukaswhite\FeedWriter;
+    require 'vendor/autoload.php';
+
 
     use Lukaswhite\FeedWriter\RSS2;
     $feed = new RSS2( );
