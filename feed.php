@@ -19,8 +19,8 @@
 
     $json_decoded = json_decode($json);
     foreach($json_decoded as $element){
-        echo $element->$id;
-    }
+        echo var_dump($element);
+            }
     //var_dump($json_decoded);
 
     curl_close($ch);
