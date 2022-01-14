@@ -18,7 +18,10 @@
     $info = curl_getinfo($ch);
 
     $json_decoded = json_decode($json);
-    var_dump($json_decoded);
+    foreach($json_decoded as $element){
+        echo $element->$id;
+    }
+    //var_dump($json_decoded);
 
     curl_close($ch);
 
@@ -54,5 +57,5 @@
             ->length( 8727310 )
             ->type( 'audio/x-m4a' );
 
-    print $feed;
+    //print $feed;
 ?>
