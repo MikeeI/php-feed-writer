@@ -1,9 +1,24 @@
 <?php
     namespace Lukaswhite\FeedWriter;
     require 'vendor/autoload.php';
-
-
     use Lukaswhite\FeedWriter\Itunes;
+
+    $BEARER = getenv("BEARER");
+
+    $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=50');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+       'Content-Type: application/json',
+       'Authorization: Bearer ' . $BEARER
+       ));
+
+    $data = curl_exec($ch);
+    $info = curl_getinfo($ch);
+
+    var_dump($data);
+
+    curl_close($ch);
+
     $feed = new Itunes( );
 
     $channel = $feed->addChannel( );
