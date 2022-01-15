@@ -78,7 +78,7 @@
 
     }
    
-    file_put_contents("feed.html", $feed);
+    file_put_contents("feed.html", $feed->toString());
 
     function sec2hms ($sec, $padHours = false) {
  
