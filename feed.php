@@ -22,7 +22,7 @@
 
     foreach($json_decoded_items as $item)
     {
-        echo $item["href"]."\n";
+        //echo $item["href"]."\n";
     }
 
     //Podcast Information
@@ -83,9 +83,10 @@
         var_dump($element->duration_ms);
         echo "\n";
     }
-    */
+   
     $output =  '<html><body><pre>' . var_export($json_decoded_items, true) . '</pre></body></html>';
-    file_put_contents("feed.html", $output);
+     */
+    file_put_contents("feed.html", $feed);
 
 
 
