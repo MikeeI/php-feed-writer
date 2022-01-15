@@ -68,7 +68,7 @@
             ->subtitle($episode["description"])
             ->duration( sec2hms(substr_replace($episode["duration_ms"] ,"", -3)))
             ->summary($episode["description"])
-            ->pubDate( new \DateTime( $json_show["release_date"] ) )
+            ->pubDate( new \DateTime( $episode["release_date"] ) )
             ->guid( 'http://example.com/podcasts/archive/aae20140615.m4a' )
             ->explicit($episode["explicit"])
             ->addEnclosure( )
