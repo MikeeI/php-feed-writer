@@ -47,7 +47,7 @@
         ->subtitle($json_show["description"])
         ->description($json_show["description"])
         ->summary($json_show["description"])
-        ->link( $json_show["external_urls"] )
+        ->link("https://open.spotify.com/show/" . $spotify_show_id)
         ->image( $json_show["name"][0]["url"] )
         ->author($json_show["publisher"])
         ->owner($json_show["publisher"])
