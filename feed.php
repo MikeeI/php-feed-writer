@@ -16,13 +16,23 @@
     $info = curl_getinfo($ch);
 
     $json_decoded = json_decode($json,true);
+    $json_decoded_items = $json_decoded['items'];
     /*
+    foreach($data['league'] as $key=>$val){// this can be ommited if only 0 index is there after 
+        //league and $data['league'][0]['events'] can be used in below foreach instead of $val['events'].
+        foreach($val['events'] as $keys=>$value){
+            echo $value['home'].' v '.$value['away'].'<br>;
+        }  
+    }
+
+
+    
     foreach($json_decoded as $element){
         var_dump($element->duration_ms);
         echo "\n";
     }
     */
-    $output =  '<html><body><pre>' . var_export($json_decoded, true) . '</pre></body></html>';
+    $output =  '<html><body><pre>' . var_export($json_decoded_items, true) . '</pre></body></html>';
     file_put_contents("feed.html", $output);
 
 
