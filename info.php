@@ -1,5 +1,5 @@
 <?php
 
-// Zeigt alle Informationen (Standardwert ist INFO_ALL)
-phpinfo();
+    phpinfo();
+    var_dump($_ENV['MY_VAR']);
 ?>
