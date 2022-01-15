@@ -53,7 +53,7 @@
         ->owner($json_show["publisher"])
         ->explicit($json_show["explicit"])
         ->copyright($json_show["publisher"])
-        ->generator("iTunes)
+        ->generator("iTunes")
         ->block("true")
         ->ttl( 600 );
 
