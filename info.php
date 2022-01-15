@@ -1,5 +1,5 @@
 <?php
 
-    phpinfo();
-    var_dump($_ENV['MY_VAR']);
+    //phpinfo();
+    var_dump($_ENV['BEARER']);
 ?>
