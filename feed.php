@@ -22,7 +22,7 @@
         echo "\n";
     }
     */
-    $output =  '<pre>' . var_export($json_decoded, true) . '</pre>';
+    $output =  '<html><body><pre>' . var_export($json_decoded, true) . '</pre></body></html>';
     file_put_contents("feed.html", $output);
 
 
