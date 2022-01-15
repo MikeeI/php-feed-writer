@@ -57,19 +57,58 @@
         ->block("true")
         ->ttl( 600 );
 
-    $channel->addItem( )
-        ->title( 'Shake Shake Shake Your Spices' )
-        ->author( 'John Doe' )
-        ->subtitle( 'A short primer on table spices' )
-        ->duration( '07:04' )
-        ->summary( 'This week we talk about <a href="https://itunes/apple.com/us/book/antique-trader-salt-pepper/id429691295?mt=11">salt and pepper shakers</a>, comparing and contrasting pour rates, construction materials, and overall aesthetics. Come and join the party!' )
-        ->pubDate( new \DateTime( '2016-03-08 12:00' ) )
-        ->guid( 'http://example.com/podcasts/archive/aae20140615.m4a' )
-        ->explicit( 'no' )
-        ->addEnclosure( )
-            ->url( 'http://example.com/podcasts/everything/AllAboutEverythingEpisode3.m4a' )
-            ->length( 8727310 )
-            ->type( 'audio/x-m4a' );
+    foreach($json_decoded_items as $episode)
+    {
+        //echo $item["href"]."\n";
+        $channel->addItem( )
+            ->title($episode["name"])
+            ->author($json_show["publisher"])
+            ->subtitle($episode["description"])
+            ->duration( sec2hms(substr_replace($episode["duration_ms"] ,"", -3)))
+            ->summary($episode["description"])
+            ->pubDate( new \DateTime( '2016-03-08 12:00' ) )
+            ->guid( 'http://example.com/podcasts/archive/aae20140615.m4a' )
+            ->explicit($episode["explicit"])
+            ->addEnclosure( )
+                ->url( 'http://example.com/podcasts/everything/AllAboutEverythingEpisode3.m4a' )
+                ->length( 8727310 )
+                ->type( 'audio/x-m4a' );
 
+    }
+   
     file_put_contents("feed.html", $feed);
+
+    function sec2hms ($sec, $padHours = false) {
+ 
+        $hms = "";
+
+        // there are 3600 seconds in an hour, so if we
+        // divide total seconds by 3600 and throw away
+        // the remainder, we've got the number of hours
+        $hours = intval(intval($sec) / 3600); 
+
+        // add to $hms, with a leading 0 if asked for
+        $hms .= ($padHours) 
+              ? str_pad($hours, 2, "0", STR_PAD_LEFT). ':'
+              : $hours. ':';
+
+        // dividing the total seconds by 60 will give us
+        // the number of minutes, but we're interested in 
+        // minutes past the hour: to get that, we need to 
+        // divide by 60 again and keep the remainder
+        $minutes = intval(($sec / 60) % 60); 
+
+        // then add to $hms (with a leading 0 if needed)
+        $hms .= str_pad($minutes, 2, "0", STR_PAD_LEFT). ':';
+
+        // seconds are simple - just divide the total
+        // seconds by 60 and keep the remainder
+        $seconds = intval($sec % 60); 
+
+        // add to $hms, again with a leading 0 if needed
+        $hms .= str_pad($seconds, 2, "0", STR_PAD_LEFT);
+
+        return $hms;
+    }
+
 ?>
