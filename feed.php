@@ -47,6 +47,7 @@
         ->subtitle(htmlspecialchars($json_show["description"]))
         ->description($json_show["description"])
         ->summary($json_show["description"])
+        ->category("News")
         ->link("https://open.spotify.com/show/" . $spotify_show_id)
         ->image( $json_show["images"][0]["url"] )
         ->author($json_show["publisher"])
