@@ -30,4 +30,4 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
     - name: info
-      run: php info.php
+      run: php feed.php
