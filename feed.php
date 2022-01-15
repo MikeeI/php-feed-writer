@@ -60,13 +60,15 @@
     foreach($json_decoded_items as $episode)
     {
         //echo $item["href"]."\n";
+        //$temp_release_date = explode($json_show["release_date"],"-");
+        //$release_date = $temp_release_date[2]."-".$temp_release_date[
         $channel->addItem( )
             ->title($episode["name"])
             ->author($json_show["publisher"])
             ->subtitle($episode["description"])
             ->duration( sec2hms(substr_replace($episode["duration_ms"] ,"", -3)))
             ->summary($episode["description"])
-            ->pubDate( new \DateTime( '2016-03-08 12:00' ) )
+            ->pubDate( new \DateTime( $json_show["release_date"] ) )
             ->guid( 'http://example.com/podcasts/archive/aae20140615.m4a' )
             ->explicit($episode["explicit"])
             ->addEnclosure( )
