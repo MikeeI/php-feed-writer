@@ -77,6 +77,8 @@
                 ->type( 'audio/x-m4a' );
 
     }
+
+    echo $feed->toString();
    
     //file_put_contents("feed.html", $feed->toString());
 
