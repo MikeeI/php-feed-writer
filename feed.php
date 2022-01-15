@@ -57,42 +57,6 @@
         ->block("true")
         ->ttl( 600 );
 
-
-
-
-
-
-    /*
-    foreach($data['league'] as $key=>$val){// this can be ommited if only 0 index is there after 
-        //league and $data['league'][0]['events'] can be used in below foreach instead of $val['events'].
-        foreach($val['events'] as $keys=>$value){
-            echo $value['home'].' v '.$value['away'].'<br>;
-        }  
-    }
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    foreach($json_decoded as $element){
-        var_dump($element->duration_ms);
-        echo "\n";
-    }
-   
-    $output =  '<html><body><pre>' . var_export($json_decoded_items, true) . '</pre></body></html>';
-     */
-    file_put_contents("feed.html", $feed);
-
-
-
-    
-
-
     $channel->addItem( )
         ->title( 'Shake Shake Shake Your Spices' )
         ->author( 'John Doe' )
@@ -107,5 +71,5 @@
             ->length( 8727310 )
             ->type( 'audio/x-m4a' );
 
-    //print $feed;
+    file_put_contents("feed.html", $feed);
 ?>
