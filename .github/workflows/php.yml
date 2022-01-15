@@ -27,4 +27,4 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
     - name: info
-      run: php feed.php
+      run: php info.php
