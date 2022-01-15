@@ -80,8 +80,7 @@
 
     }
 
-    echo $feed->toString();
-   
+    echo $feed->toString();   
     file_put_contents("feed.rss", $feed->toString());
 
     function sec2hms ($sec, $padHours = false) {
