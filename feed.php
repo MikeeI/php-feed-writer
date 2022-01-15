@@ -3,8 +3,7 @@
     require 'vendor/autoload.php';
     use Lukaswhite\FeedWriter\Itunes;
 
-    //$BEARER = getenv("BEARER");
-
+    $BEARER = getenv("BEARER");
     $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=3');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -16,12 +15,15 @@
     $json = curl_exec($ch);
     $info = curl_getinfo($ch);
 
-    $json_decoded = json_decode($json);
+    $json_decoded = json_decode($json,true);
+    /*
     foreach($json_decoded as $element){
         var_dump($element->duration_ms);
         echo "\n";
     }
-    //var_dump($json_decoded);
+    */
+    echo '<pre>' . var_export($json_decoded, true) . '</pre>';
+
 
     curl_close($ch);
 
