@@ -44,15 +44,15 @@
     $feed = new Itunes( );
     $channel = $feed->addChannel( );
     $channel->title($json_show["name"])
-        ->subtitle( 'A show about everything')
+        ->subtitle($json_show["description"])
         ->description($json_show["description"])
         ->summary($json_show["description"])
         ->link( $json_show["external_urls"] )
-        ->image( 'http://example.com/podcasts/everything/AllAboutEverything.jpg' )
+        ->image( $json_show["name"][0]["url"] )
         ->author($json_show["publisher"])
         ->owner($json_show["publisher"])
         ->explicit($json_show["explicit"])
-        ->copyright( "Spotify")
+        ->copyright($json_show["publisher"])
         ->generator("iTunes)
         ->block("true")
         ->ttl( 600 );
