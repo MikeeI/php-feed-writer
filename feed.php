@@ -44,7 +44,7 @@
     $feed = new Itunes( );
     $channel = $feed->addChannel( );
     $channel->title($json_show["name"])
-        ->subtitle($json_show["description"])
+        ->subtitle(htmlspecialchars($json_show["description"]))
         ->description($json_show["description"])
         ->summary($json_show["description"])
         ->link("https://open.spotify.com/show/" . $spotify_show_id)
@@ -63,14 +63,14 @@
         //$temp_release_date = explode($json_show["release_date"],"-");
         //$release_date = $temp_release_date[2]."-".$temp_release_date[
         $channel->addItem( )
-            ->title($episode["name"])
-            ->author($json_show["publisher"])
-            ->subtitle($episode["description"])
+            ->title(htmlspecialchars($episode["name"]))
+            ->author(htmlspecialchars($json_show["publisher"]))
+            ->subtitle(htmlspecialchars($episode["description"]))
             ->duration( sec2hms(substr_replace($episode["duration_ms"] ,"", -3)))
-            ->summary($episode["description"])
+            ->summary(htmlspecialchars($episode["description"]))
             ->pubDate( new \DateTime( '2016-03-08 12:00' ) )
             ->guid( 'http://example.com/podcasts/archive/aae20140615.m4a' )
-            ->explicit($episode["explicit"])
+            ->explicit(htmlspecialchars($episode["explicit"]))
             ->addEnclosure( )
                 ->url( 'http://example.com/podcasts/everything/AllAboutEverythingEpisode3.m4a' )
                 ->length( 8727310 )
