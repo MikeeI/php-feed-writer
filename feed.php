@@ -4,6 +4,8 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $BEARER = getenv("BEARER");
+    $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk"
+
     $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=3');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -22,6 +24,28 @@
     {
         echo $item["href"]."\n";
     }
+
+    //Podcast Information
+    $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+       'Accept: application/json',
+       'Content-Type: application/json',
+       'Authorization: Bearer ' . $BEARER
+       ));
+
+    $json = curl_exec($ch);
+    $info = curl_getinfo($ch);
+
+    $json_show = json_decode($json,true);
+
+    echo "ShowID: ".$json_show["description"]."\n";
+
+
+
+
+
+
     /*
     foreach($data['league'] as $key=>$val){// this can be ommited if only 0 index is there after 
         //league and $data['league'][0]['events'] can be used in below foreach instead of $val['events'].
@@ -31,6 +55,13 @@
     }
 
 
+    
+    
+    
+    
+    
+    
+    
     
     foreach($json_decoded as $element){
         var_dump($element->duration_ms);
@@ -48,7 +79,7 @@
 
     $channel = $feed->addChannel( );
 
-    $channel->title( 'All About Everything' )
+    $channel->title( 'The Joe Rogan Experience' )
         ->subtitle( 'A show about everything' )
         ->description( 'All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store' )
         ->summary( 'All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store' )
