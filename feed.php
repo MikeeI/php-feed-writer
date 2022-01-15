@@ -6,7 +6,7 @@
     $BEARER = getenv("BEARER");
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
 
-    $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=3');
+    $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id . '/episodes?limit=3');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
        'Accept: application/json',
@@ -26,7 +26,7 @@
     }
 
     //Podcast Information
-    $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk');
+    $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
        'Accept: application/json',
