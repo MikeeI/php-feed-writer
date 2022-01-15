@@ -37,9 +37,25 @@
     $json = curl_exec($ch);
     $info = curl_getinfo($ch);
 
+    curl_close($ch);
+
     $json_show = json_decode($json,true);
 
-    echo "ShowID: ".$json_show["description"]."\n";
+    $feed = new Itunes( );
+    $channel = $feed->addChannel( );
+    $channel->title($json_show["name"])
+        ->subtitle( 'A show about everything')
+        ->description($json_show["description"])
+        ->summary($json_show["description"])
+        ->link( $json_show["external_urls"] )
+        ->image( 'http://example.com/podcasts/everything/AllAboutEverything.jpg' )
+        ->author($json_show["publisher"])
+        ->owner($json_show["publisher"])
+        ->explicit($json_show["explicit"])
+        ->copyright( "Spotify")
+        ->generator("iTunes)
+        ->block("true")
+        ->ttl( 600 );
 
 
 
@@ -73,25 +89,8 @@
 
 
 
-    curl_close($ch);
+    
 
-    $feed = new Itunes( );
-
-    $channel = $feed->addChannel( );
-
-    $channel->title( 'The Joe Rogan Experience' )
-        ->subtitle( 'A show about everything' )
-        ->description( 'All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store' )
-        ->summary( 'All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store' )
-        ->link( 'http://www.example.com/podcasts/everything/index.html' )
-        ->image( 'http://example.com/podcasts/everything/AllAboutEverything.jpg' )
-        ->author( 'John Doe' )
-        ->owner( 'John Doe', 'john.doe@example.com' )
-        ->explicit( 'no' )
-        ->copyright( '&#x2117; &amp; &#xA9; 2014 John Doe &amp; Family' )
-        ->generator( 'Feed Writer' )
-        ->ttl( 60 )
-        ->lastBuildDate( new \DateTime( '2016-03-10 02:00' ) );
 
     $channel->addItem( )
         ->title( 'Shake Shake Shake Your Spices' )
