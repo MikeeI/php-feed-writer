@@ -4,7 +4,7 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $BEARER = getenv("BEARER");
-    $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk"
+    $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
 
     $ch = curl_init('https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk/episodes?limit=3');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
