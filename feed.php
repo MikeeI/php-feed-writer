@@ -17,6 +17,11 @@
 
     $json_decoded = json_decode($json,true);
     $json_decoded_items = $json_decoded['items'];
+
+    foreach($json_decoded_items as $item)
+    {
+        echo $item["href"]."\n";
+    }
     /*
     foreach($data['league'] as $key=>$val){// this can be ommited if only 0 index is there after 
         //league and $data['league'][0]['events'] can be used in below foreach instead of $val['events'].
