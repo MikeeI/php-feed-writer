@@ -31,3 +31,9 @@ jobs:
       run: composer install --prefer-dist --no-progress
     - name: info
       run: php feed.php
+    - name: Commit report
+      run: |
+        git config --global user.name 'MikeeI'
+        git config --global user.email 'MikeeI@users.noreply.github.com'
+        git commit -am "Automated report"
+        git push
