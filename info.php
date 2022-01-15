@@ -1,5 +1,5 @@
 <?php
 
     //phpinfo();
-    echo $_ENV['BEARER'];
+    echo getenv('BEARER');
 ?>
