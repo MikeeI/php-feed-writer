@@ -24,9 +24,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
     - name: Set env
-      run: echo "GITHUB_SHA_SHORT=$(echo ${{ secrets.BEARER }} | cut -c 1-6)" >> $GITHUB_ENV
+      run: echo "BEARER=$(echo ${{ secrets.BEARER }})" >> $GITHUB_ENV
     - name: Test
-      run: echo $GITHUB_SHA_SHORT
+      run: echo $BEARER
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
     - name: info
