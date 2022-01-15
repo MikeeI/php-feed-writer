@@ -37,3 +37,5 @@ jobs:
         git config --global user.email 'MikeeI@users.noreply.github.com'
         git commit -am "Automated report"
         git push
+    - name: ls
+      run: ls -lah
