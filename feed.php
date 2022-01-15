@@ -22,7 +22,9 @@
         echo "\n";
     }
     */
-    echo '<pre>' . var_export($json_decoded, true) . '</pre>';
+    $output =  '<pre>' . var_export($json_decoded, true) . '</pre>';
+    file_put_contents("feed.html", $output);
+
 
 
     curl_close($ch);
