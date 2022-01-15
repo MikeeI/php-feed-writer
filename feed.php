@@ -70,7 +70,7 @@
             ->subtitle(htmlspecialchars($episode["description"]))
             ->duration( sec2hms(substr_replace($episode["duration_ms"] ,"", -3)))
             ->summary(htmlspecialchars($episode["description"]))
-            ->pubDate( new \DateTime( $json_show["release_date"] ) )
+            ->pubDate( new \DateTime( $episode["release_date"] ) )
             ->guid( "https://open.spotify.com/episode/".$episode["id"] )
             ->explicit(htmlspecialchars($episode["explicit"]))
             ->addEnclosure( )
