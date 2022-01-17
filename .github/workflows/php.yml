@@ -31,8 +31,8 @@ jobs:
         echo "BEARER=$(cat token)" >> $GITHUB_ENV
     #- name: Set env
     #  run: echo "BEARER=$(echo ${{ secrets.BEARER }})" >> $GITHUB_ENV
-    - name: Test
-      run: echo $BEARER
+    #- name: Test
+    #  run: echo $BEARER
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
     - name: info
