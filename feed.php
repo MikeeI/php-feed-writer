@@ -18,6 +18,8 @@
     $json = curl_exec($ch);
     $info = curl_getinfo($ch);
 
+    var_dump($json);
+
     $json_decoded = json_decode($json,true);
     $json_decoded_items = $json_decoded['items'];
 
