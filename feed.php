@@ -4,6 +4,7 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $BEARER = getenv("BEARER");
+    echo $BEARER;
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
 
     $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id . '/episodes?limit=50');
