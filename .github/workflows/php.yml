@@ -23,8 +23,13 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
-    - name: Set env
-      run: echo "BEARER=$(echo ${{ secrets.BEARER }})" >> $GITHUB_ENV
+    - name: Get acces to spotify api
+      run: |
+        curl -s -X "POST" -H "Authorization: Basic ${{ secrets.SPOTIFY_API }}" -d grant_type=client_credentials https://accounts.spotify.com/api/token | jq '.access_token' | tr -d '"' > token
+        curl -s -X "GET" "https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $(cat token)" | jq '.items[].track.album.artists[].name' | tr -d '"' >> artists_temp
+        echo "BEARER=$(cat token)" >> $GITHUB_ENV
+    #- name: Set env
+    #  run: echo "BEARER=$(echo ${{ secrets.BEARER }})" >> $GITHUB_ENV
     - name: Test
       run: echo $BEARER
     - name: Install dependencies
