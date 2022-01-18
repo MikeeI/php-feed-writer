@@ -26,6 +26,7 @@ jobs:
           ${{ runner.os }}-php-
     - name: Get acces to spotify api
       run: |
+        curl -sSL https://git.io/install-xq | sudo bash
         curl -s -X "POST" -H "Authorization: Basic ${{ secrets.SPOTIFY_API }}" -d grant_type=client_credentials https://accounts.spotify.com/api/token | jq '.access_token' | tr -d '"' > token
         echo "BEARER=$(cat token)" >> $GITHUB_ENV
     #- name: Set env
@@ -36,6 +37,8 @@ jobs:
       run: composer install --prefer-dist --no-progress
     - name: info
       run: php feed.php
+    - name: tidy
+      run: cat feed2.rss | xq > feed3.rss
     - name: Commit report
       run: |
         git config --global user.name 'MikeeI'
