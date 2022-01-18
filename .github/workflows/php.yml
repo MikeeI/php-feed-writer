@@ -38,7 +38,7 @@ jobs:
     - name: info
       run: php feed.php
     - name: tidy
-      run: cat feed2.rss | xq > feed3.rss
+      run: cat feed2.rss | xq > feed.rss
     - name: Commit report
       run: |
         git config --global user.name 'MikeeI'
