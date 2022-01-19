@@ -19,6 +19,18 @@
     <ttl>600</ttl>
     <itunes:category text="News"/>
     <item>
+      <title>#1766 - Ben Patrick</title>
+      <guid>https://open.spotify.com/episode/2zfpB6RoKwylk3DbN3GXA0</guid>
+      <pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate>
+      <author>Joe Rogan</author>
+      <enclosure url="https://github.com/JohnMeier/space/releases/download/podcast/4rOoJ6Egrf8K2IrywzwOMk-2022-01-19-2zfpB6RoKwylk3DbN3GXA0.m4a" length="" type="audio/x-m4a"/>
+      <itunes:subtitle>Ben Patrick, known online as "the Knees Over Toes Guy," is a coach and owner of ATG: an online personal training program for strengthening knees and developing full body fitness. His new book, "ATG for Life," is available now.</itunes:subtitle>
+      <itunes:summary>Ben Patrick, known online as &quot;the Knees Over Toes Guy,&quot; is a coach and owner of ATG: an online personal training program for strengthening knees and developing full body fitness. His new book, &quot;ATG for Life,&quot; is available now.</itunes:summary>
+      <itunes:author>Joe Rogan</itunes:author>
+      <itunes:explicit>1</itunes:explicit>
+      <itunes:duration>01:58:45</itunes:duration>
+    </item>
+    <item>
       <title>#1765 - Phillip Frankland Lee</title>
       <guid>https://open.spotify.com/episode/4YrIJKGWy3aGte21RUEKy1</guid>
       <pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate>
@@ -604,18 +616,6 @@
       <itunes:author>Joe Rogan</itunes:author>
       <itunes:explicit>1</itunes:explicit>
       <itunes:duration>03:29:28</itunes:duration>
-    </item>
-    <item>
-      <title>#1719 - Michael Shellenberger</title>
-      <guid>https://open.spotify.com/episode/5NxzDE5TmviUV8te2eZjMP</guid>
-      <pubDate>Thu, 14 Oct 2021 00:00:00 +0000</pubDate>
-      <author>Joe Rogan</author>
-      <enclosure url="https://github.com/JohnMeier/space/releases/download/podcast/4rOoJ6Egrf8K2IrywzwOMk-2021-10-14-5NxzDE5TmviUV8te2eZjMP.m4a" length="" type="audio/x-m4a"/>
-      <itunes:subtitle>Michael Shellenberger is a journalist and author. His latest book, "San Fransicko: Why Progressives Ruin Cities," will be published on October 12, 2021.</itunes:subtitle>
-      <itunes:summary>Michael Shellenberger is a journalist and author. His latest book, &quot;San Fransicko: Why Progressives Ruin Cities,&quot; will be published on October 12, 2021.</itunes:summary>
-      <itunes:author>Joe Rogan</itunes:author>
-      <itunes:explicit>1</itunes:explicit>
-      <itunes:duration>02:53:33</itunes:duration>
     </item>
   </channel>
 </rss>
