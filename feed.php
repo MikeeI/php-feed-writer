@@ -77,8 +77,8 @@
             ->guid( "https://open.spotify.com/episode/".$episode["id"] )
             ->explicit(htmlspecialchars($episode["explicit"]))
             ->addEnclosure( )
-                ->url( 'http://example.com/show/'.$spotify_show_id . '/' . $spotify_show_id . "-" . $episode["release_date"] . "-" .$episode["id"] . '.m4a' )
-                ->length( 8727310 )
+                ->url( 'https://github.com/JohnMeier/space/releases/download/podcast/' . $spotify_show_id . "-" . $episode["release_date"] . "-" .$episode["id"] . '.m4a' )
+                //->length( 8727310 )
                 ->type( 'audio/x-m4a' );
 
     }
