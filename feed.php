@@ -15,7 +15,7 @@
 
     for ($i = 0; $i < $loop_count; $i++) {
         //echo "The number is: $i <\n>";
-        array_push($json_show_episodes,getEpisodes($spotify_show_id , $limit , $i*$limit ));
+        array_push($json_show_episodes[0],getEpisodes($spotify_show_id , $limit , $i*$limit ));
     }   
 
     var_dump($json_show_episodes);
