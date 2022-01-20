@@ -31,6 +31,7 @@
 
     }   
     
+    echo count($json_show_episodes);
     var_dump($json_show_episodes[0]);
     //$json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
     //$json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , 10 , 10 ));
