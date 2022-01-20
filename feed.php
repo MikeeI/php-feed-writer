@@ -4,10 +4,20 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
+    $limit = 50;
 
     $json_show = getShowInformation($spotify_show_id);
-    $json_show_episodes = getEpisodes($spotify_show_id,100,0);
+    $json_show_episodes = [];
+    
+    $episode_count = $json_show["total_episodes"];
+    $loop_count = intdiv($episode_count, $limit)+1;
+    
+    for ($i = 0; $i <= $loop_count; $i++) {
+        echo "The number is: $i <\n>";
+        array_push($json_show_episodes,getEpisodes($spotify_show_id,50,50*$i));
+    }   
 
+        
     
 
     $feed = new Itunes( );
