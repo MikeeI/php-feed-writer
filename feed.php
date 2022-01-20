@@ -79,7 +79,7 @@
 
         $json_decoded = json_decode($json,true);
         $json_decoded_items = $json_decoded['items'];
-        return $json_decoded_items 
+        return $json_decoded_items;
     }
 
     function getShowInformation($spotify_show_id)
@@ -101,7 +101,7 @@
 
         $json_show = json_decode($json,true);
         
-        return $json_show
+        return $json_show;
     }
 
     function sec2hms ($sec, $padHours = false) {
