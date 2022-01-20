@@ -19,6 +19,18 @@
     <ttl>600</ttl>
     <itunes:category text="News"/>
     <item>
+      <title>#1767 - James Lindsay</title>
+      <guid>https://open.spotify.com/episode/2rYwwE7hcpgsDo9vRVHxAI</guid>
+      <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
+      <author>Joe Rogan</author>
+      <enclosure url="https://github.com/JohnMeier/space/releases/download/podcast/4rOoJ6Egrf8K2IrywzwOMk-2022-01-20-2rYwwE7hcpgsDo9vRVHxAI.m4a" length="" type="audio/x-m4a"/>
+      <itunes:subtitle>James Lindsay is an author, mathematician, podcaster, and founder of New Discourses: an online resource for educating the public on the dangers of the "Critical Social Justice" movement. His latest book, co-authored with Charles Pincourt, is "Counter Wokecraft: A Field Manual for Combatting the Woke in the University and Beyond."</itunes:subtitle>
+      <itunes:summary>James Lindsay is an author, mathematician, podcaster, and founder of New Discourses: an online resource for educating the public on the dangers of the &quot;Critical Social Justice&quot; movement. His latest book, co-authored with Charles Pincourt, is &quot;Counter Wokecraft: A Field Manual for Combatting the Woke in the University and Beyond.&quot;</itunes:summary>
+      <itunes:author>Joe Rogan</itunes:author>
+      <itunes:explicit>1</itunes:explicit>
+      <itunes:duration>03:12:20</itunes:duration>
+    </item>
+    <item>
       <title>#1766 - Ben Patrick</title>
       <guid>https://open.spotify.com/episode/2zfpB6RoKwylk3DbN3GXA0</guid>
       <pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate>
