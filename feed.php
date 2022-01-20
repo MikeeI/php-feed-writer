@@ -13,6 +13,7 @@
     $loop_count = intdiv($episode_count, $limit)+1;
     $loop_count = 5;
 
+    /*
     for ($i = 0; $i < $loop_count; $i++) {
         //echo "The number is: $i <\n>";
         if($i==0)
@@ -26,6 +27,8 @@
         }
         
     }   
+    */
+    $json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
 
     var_dump($json_show_episodes);
        
