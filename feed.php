@@ -5,8 +5,8 @@
 
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
 
-    $json_show = getShowInformation($spotify_show_id)
-    $json_show_episodes = getEpisodes($spotify_show_id,100,0)
+    $json_show = getShowInformation($spotify_show_id);
+    $json_show_episodes = getEpisodes($spotify_show_id,100,0);
 
     
 
