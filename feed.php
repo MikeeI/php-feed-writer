@@ -4,14 +4,14 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
-    $limit = 10;
+    $limit = 50;
 
     $json_show = getShowInformation($spotify_show_id);
     $json_show_episodes = [];
     
     $episode_count = $json_show["total_episodes"];
     $loop_count = intdiv($episode_count, $limit)+1;
-    $loop_count = 5;
+    //$loop_count = 5;
 
     echo "Episode-Count: ".$episode_count."\n";
     echo "Loop-Count: ".$loop_count."\n";
