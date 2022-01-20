@@ -22,7 +22,7 @@
         
         $temp_episodes = getEpisodes($spotify_show_id , $limit , $loop_count * $limit );
         echo "temp_episodes: " . gettype($temp_episodes). "\n";
-        echo "$json_show_episodes: " . gettype($json_show_episodes). "\n";
+        echo "json_show_episodes: " . gettype($json_show_episodes). "\n";
 
         for($j = 0; $j < count($temp_episodes); $j++)
         {
