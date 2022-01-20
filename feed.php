@@ -1,94 +1,108 @@
 <?php
     namespace Lukaswhite\FeedWriter;
-    require 'vendor/autoload.php';
+    require "vendor/autoload.php";
     use Lukaswhite\FeedWriter\Itunes;
 
-    $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
+    $spotify_show_id = "4rOoJ6Egrf8K2IrywzwOMk";
     $limit = 50;
+    $loop_limit = 1;
 
     $json_show = getShowInformation($spotify_show_id);
     $json_show_episodes = [];
-    
+
     $episode_count = $json_show["total_episodes"];
-    $loop_count = intdiv($episode_count, $limit)+1;
-    //$loop_count = 5;
+    if ($loop_limit != 1) {
+        $loop_count = intdiv($episode_count, $limit) + 1;
+    } else {
+        $loop_count = $loop_limit;
+    }
 
-    echo "Episode-Count: ".$episode_count."\n";
-    echo "Loop-Count: ".$loop_count."\n";
-
+    echo "Episode-Count: " . $episode_count . "\n";
+    echo "Loop-Count: " . $loop_count . "\n";
 
     for ($i = 0; $i < $loop_count; $i++) {
         echo "Page: " . $i . "\n";
-        
-        $temp_episodes = getEpisodes($spotify_show_id , $limit , $i * $limit );
-        for($j = 0; $j < count($temp_episodes); $j++)
-        {
+
+        $temp_episodes = getEpisodes($spotify_show_id, $limit, $i * $limit);
+        for ($j = 0; $j < count($temp_episodes); $j++) {
             $json_show_episodes[] = $temp_episodes[$j];
         }
-    }   
-    
- 
+    }
 
-    $feed = new Itunes( );
-    $channel = $feed->addChannel( );
-    $channel->title($json_show["name"])
+    $feed = new Itunes();
+    $channel = $feed->addChannel();
+    $channel
+        ->title($json_show["name"])
         ->subtitle(htmlspecialchars($json_show["description"]))
         ->description($json_show["description"])
         ->summary($json_show["description"])
         ->link("https://open.spotify.com/show/" . $spotify_show_id)
-        ->image( $json_show["images"][0]["url"] )
+        ->image($json_show["images"][0]["url"])
         ->author($json_show["publisher"])
         ->owner($json_show["publisher"])
         ->explicit($json_show["explicit"])
         ->copyright($json_show["publisher"])
         ->generator("iTunes")
         ->block("true")
-        ->ttl( 600 );
+        ->ttl(600);
 
-    $channel->addCategory()->term('News');
+    $channel->addCategory()->term("News");
 
-    foreach($json_show_episodes as $episode)
-    {
+    foreach ($json_show_episodes as $episode) {
         //echo $item["href"]."\n";
         //$temp_release_date = explode($json_show["release_date"],"-");
         //$release_date = $temp_release_date[2]."-".$temp_release_date[
-        $channel->addItem( )
+        $channel
+            ->addItem()
             ->title(htmlspecialchars($episode["name"]))
             ->author(htmlspecialchars($json_show["publisher"]))
             ->subtitle(htmlspecialchars($episode["description"]))
-            ->duration( sec2hms(substr_replace($episode["duration_ms"] ,"", -3)))
+            ->duration(sec2hms(substr_replace($episode["duration_ms"], "", -3)))
             ->summary(htmlspecialchars($episode["description"]))
-            ->pubDate( new \DateTime( $episode["release_date"] ) )
-            ->guid( "https://open.spotify.com/episode/".$episode["id"] )
+            ->pubDate(new \DateTime($episode["release_date"]))
+            ->guid("https://open.spotify.com/episode/" . $episode["id"])
             ->explicit(htmlspecialchars($episode["explicit"]))
-            ->addEnclosure( )
-                ->url( 'https://github.com/JohnMeier/space/releases/download/podcast/' . $spotify_show_id . "-" . $episode["release_date"] . "-" .$episode["id"] . '.m4a' )
-                //->length( 8727310 )
-                ->type( 'audio/x-m4a' );
-
+            ->addEnclosure()
+            ->url(
+                "https://github.com/JohnMeier/space/releases/download/podcast/" .
+                    $spotify_show_id .
+                    "-" .
+                    $episode["release_date"] .
+                    "-" .
+                    $episode["id"] .
+                    ".m4a"
+            )
+            //->length( 8727310 )
+            ->type("audio/x-m4a");
     }
 
-    //echo $feed->toString();   
+    //echo $feed->toString();
     file_put_contents("feed2.rss", $feed->toString());
 
-    
-    function getEpisodes($spotify_show_id, $limit,$offset)
+    function getEpisodes($spotify_show_id, $limit, $offset)
     {
         $BEARER = getenv("BEARER");
-        
-        $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id . '/episodes?limit=' . $limit . '&market=es&offset=' . $offset);
+
+        $ch = curl_init(
+            "https://api.spotify.com/v1/shows/" .
+                $spotify_show_id .
+                "/episodes?limit=" .
+                $limit .
+                "&market=es&offset=" .
+                $offset
+        );
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-           'Accept: application/json',
-           'Content-Type: application/json',
-           'Authorization: Bearer ' . $BEARER
-           ));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Accept: application/json",
+            "Content-Type: application/json",
+            "Authorization: Bearer " . $BEARER,
+        ]);
 
         $json = curl_exec($ch);
         $info = curl_getinfo($ch);
 
-        $json_decoded = json_decode($json,true);
-        $json_decoded_items = $json_decoded['items'];
+        $json_decoded = json_decode($json, true);
+        $json_decoded_items = $json_decoded["items"];
         return $json_decoded_items;
     }
 
@@ -96,33 +110,36 @@
     {
         //Podcast Information
         $BEARER = getenv("BEARER");
-        
-        $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id."?market=es");
+
+        $ch = curl_init(
+            "https://api.spotify.com/v1/shows/" . $spotify_show_id . "?market=es"
+        );
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-           'Accept: application/json',
-           'Content-Type: application/json',
-           'Authorization: Bearer ' . $BEARER
-           ));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Accept: application/json",
+            "Content-Type: application/json",
+            "Authorization: Bearer " . $BEARER,
+        ]);
 
         $json = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
 
-        $json_show = json_decode($json,true);
-        
+        $json_show = json_decode($json, true);
+
         return $json_show;
     }
 
-    function sec2hms ($sec, $padHours = false) {
+    function sec2hms($sec, $padHours = false)
+    {
         $hms = "";
-        $hours = intval(intval($sec) / 3600); 
-        $hms .= ($padHours) 
-              ? str_pad($hours, 2, "0", STR_PAD_LEFT). ':'
-              : $hours. ':';
-        $minutes = intval(($sec / 60) % 60); 
-        $hms .= str_pad($minutes, 2, "0", STR_PAD_LEFT). ':';
-        $seconds = intval($sec % 60); 
+        $hours = intval(intval($sec) / 3600);
+        $hms .= $padHours
+            ? str_pad($hours, 2, "0", STR_PAD_LEFT) . ":"
+            : $hours . ":";
+        $minutes = intval(($sec / 60) % 60);
+        $hms .= str_pad($minutes, 2, "0", STR_PAD_LEFT) . ":";
+        $seconds = intval($sec % 60);
         $hms .= str_pad($seconds, 2, "0", STR_PAD_LEFT);
         return $hms;
     }
