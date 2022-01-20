@@ -1,4 +1,4 @@
-name: PHP Composer
+name: PHP Execution
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   schedule:
    - cron: "0 */3 * * *"
 jobs:
-  build:
+  generate_feed:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
