@@ -26,7 +26,7 @@
         else
         {
             echo "$i Run\n";
-            $temp = getEpisodes($spotify_show_id , $limit , $loop_count * $limit )
+            $temp = getEpisodes($spotify_show_id , $limit , $loop_count * $limit );
             $json_show_episodes = array_merge($json_show_episodes, $temp);
         }
 
