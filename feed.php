@@ -4,14 +4,14 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
-    $limit = 10;
+    $limit = 50;
 
     $json_show = getShowInformation($spotify_show_id);
     $json_show_episodes = [];
     
     $episode_count = $json_show["total_episodes"];
     $loop_count = intdiv($episode_count, $limit)+1;
-    $loop_count = 5;
+    //$loop_count = 5;
 
     echo "Episode-Count: ".$episode_count."\n";
     echo "Loop-Count: ".$loop_count."\n";
@@ -24,44 +24,10 @@
         for($j = 0; $j < count($temp_episodes); $j++)
         {
             $json_show_episodes[] = $temp_episodes[$j];
-            echo $temp_episodes[$j]["duration_ms"]."\n";
         }
-        
-        /*
-        if($i == 0)
-        {
-            $json_show_episodes = getEpisodes($spotify_show_id , $limit , $i * $limit );
-        }
-        else
-        {
-            
-            $temp_episodes = getEpisodes($spotify_show_id , $limit , $i * $limit );
-            echo "temp_episodes: " . gettype($temp_episodes). "\n";
-            echo "json_show_episodes: " . gettype($json_show_episodes). "\n";
-            for($j = 0; $j < count($temp_episodes); $j++)
-            {
-                $json_show_episodes = array_push($json_show_episodes, $temp_episodes[$j]);
-            }
-            
-        }
-        */
-       
-        
-        //var_dump($temp_episodes[0]);
-
-        
-
     }   
     
-    echo count($json_show_episodes);
-    var_dump($json_show_episodes[0]);
-    //$json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
-    //$json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , 10 , 10 ));
-
-    //var_dump($json_show_episodes);
-       
-    //echo '<pre>' . var_export($json_show_episodes, true) . '</pre>';
-    
+ 
 
     $feed = new Itunes( );
     $channel = $feed->addChannel( );
@@ -102,8 +68,9 @@
 
     }
 
-    //echo $feed->toString();   
+    echo $feed->toString();   
     //file_put_contents("feed2.rss", $feed->toString());
+
     
     function getEpisodes($spotify_show_id, $limit,$offset)
     {
