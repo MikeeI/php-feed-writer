@@ -20,10 +20,12 @@
         echo "Page: " . $i . "\n";
         if($i==0)
         {
+            echo "First Run\n"
             $json_show_episodes = getEpisodes($spotify_show_id , $limit , 0 );
         }
         else
         {
+            echo "$i Run\n"
             $temp = getEpisodes($spotify_show_id , $limit , $loop_count * $limit )
             $json_show_episodes = array_merge($json_show_episodes, $temp);
         }
