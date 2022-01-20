@@ -3,8 +3,6 @@ name: PHP Composer
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
   schedule:
    - cron: "0 */3 * * *"
 jobs:
@@ -24,7 +22,7 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
-    - name: Get acces to spotify api
+    - name: Refresh Token
       run: |
         curl -sSL https://git.io/install-xq | sudo bash
         curl -s -X "POST" -H "Authorization: Basic ${{ secrets.SPOTIFY_API }}" -d grant_type=client_credentials https://accounts.spotify.com/api/token | jq '.access_token' | tr -d '"' > token
@@ -33,11 +31,11 @@ jobs:
     #  run: echo "BEARER=$(echo ${{ secrets.BEARER }})" >> $GITHUB_ENV
     #- name: Test
     #  run: echo $BEARER
-    - name: Install dependencies
+    - name: Composer Install
       run: composer install --prefer-dist --no-progress
-    - name: info
+    - name: Feed Generation
       run: php feed.php
-    - name: tidy
+    - name: RSS Tidy
       run: cat feed2.rss | xq > feed.rss
     - name: Commit report
       run: |
