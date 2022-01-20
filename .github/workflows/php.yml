@@ -46,5 +46,5 @@ jobs:
         git add -A
         git commit -am "Automated report"
         git push
-    - name: ls
-      run: ls -lah
+    - name: Ping Overcast
+      run: curl --data-urlencode "urlprefix=https://github.com/MikeeI/php-feed-writer/blob/master/feed.rss" https://overcast.fm/ping
