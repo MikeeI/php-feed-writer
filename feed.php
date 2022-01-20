@@ -18,6 +18,7 @@
         array_push($json_show_episodes,getEpisodes($spotify_show_id , $limit , $i*$limit ));
     }   
 
+    var_dump($json_show);
        
     //echo '<pre>' . var_export($json_show_episodes, true) . '</pre>';
     
