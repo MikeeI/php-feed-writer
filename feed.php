@@ -18,7 +18,15 @@
 
     for ($i = 0; $i < $loop_count; $i++) {
         echo "Page: " . $i . "\n";
-        $json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , $limit , $loop_count * $limit ));     
+        if($i==0)
+        {
+            $json_show_episodes = getEpisodes($spotify_show_id , $limit , 0 );
+        }
+        else
+        {
+            $json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , $limit , $loop_count * $limit ));
+        }
+
     }   
     
     //$json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
