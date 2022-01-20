@@ -66,7 +66,7 @@
     {
         $BEARER = getenv("BEARER");
         
-        $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id . '/episodes?limit=50&market=es');
+        $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id . '/episodes?limit=' . $limit . '&market=es&offset=' . $offset);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
            'Accept: application/json',
