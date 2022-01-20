@@ -13,7 +13,7 @@
     $loop_count = intdiv($episode_count, $limit)+1;
 
     echo "Episode-Count: ".$episode_count."\n";
-    echo "Loop-Count: ".$episode_count."\n";
+    echo "Loop-Count: ".$loop_count."\n";
 
 
     for ($i = 0; $i < $loop_count; $i++) {
@@ -24,7 +24,8 @@
         }
         else
         {
-            $json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , $limit , $loop_count * $limit ));
+            $temp = getEpisodes($spotify_show_id , $limit , $loop_count * $limit )
+            $json_show_episodes = array_merge($json_show_episodes, $temp);
         }
 
     }   
