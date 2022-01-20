@@ -4,13 +4,14 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
-    $limit = 50;
+    $limit = 10;
 
     $json_show = getShowInformation($spotify_show_id);
     $json_show_episodes = [];
     
     $episode_count = $json_show["total_episodes"];
     $loop_count = intdiv($episode_count, $limit)+1;
+    $loop_count = 5;
 
     echo "Episode-Count: ".$episode_count."\n";
     echo "Loop-Count: ".$loop_count."\n";
@@ -18,16 +19,12 @@
 
     for ($i = 0; $i < $loop_count; $i++) {
         echo "Page: " . $i . "\n";
-        if($i==0)
+        
+        $temp_episodes = getEpisodes($spotify_show_id , $limit , $loop_count * $limit );
+        for($j = 0; $j < count($temp_episodes); $j++)
         {
-            
-            $json_show_episodes = getEpisodes($spotify_show_id , $limit , 0 );
-        }
-        else
-        {
-            $temp = getEpisodes($spotify_show_id , $limit , $loop_count * $limit );
-            $json_show_episodes = array_merge($json_show_episodes, $temp);
-        }
+            $json_show_episodes = array_push($json_show_episodes, $$temp_episodes[$j];
+        }     
 
     }   
     
