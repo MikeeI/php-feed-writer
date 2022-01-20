@@ -14,11 +14,11 @@
     $loop_count = 5;
 
     for ($i = 0; $i < $loop_count; $i++) {
-        echo "The number is: $i <\n>";
+        //echo "The number is: $i <\n>";
         array_push($json_show_episodes,getEpisodes($spotify_show_id , $limit , $i*$limit ));
     }   
 
-    var_dump($json_show);
+    var_dump($json_show_episodes);
        
     //echo '<pre>' . var_export($json_show_episodes, true) . '</pre>';
     
