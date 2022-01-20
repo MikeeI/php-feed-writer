@@ -44,5 +44,5 @@ jobs:
         git config --global user.name 'MikeeI'
         git config --global user.email 'MikeeI@users.noreply.github.com'
         git add -A
-        git commit -am "Feed Generation" --no-verify
+        git diff --exit-code || git commit -am "Feed Generation"        
         git push
