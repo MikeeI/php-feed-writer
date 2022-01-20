@@ -5,17 +5,17 @@
 
     $spotify_show_id = "4rOoJ6Egrf8K2IrywzwOMk";
     $limit = 50;
-    $loop_limit = 1;
+    $loop_limit = null;
 
     $json_show = getShowInformation($spotify_show_id);
     $json_show_episodes = [];
 
     $episode_count = $json_show["total_episodes"];
-    if ($loop_limit != 1) {
-        $loop_count = intdiv($episode_count, $limit) + 1;
-    } else {
+    $loop_count = intdiv($episode_count, $limit) + 1;
+    if ($loop_limit != null) {
         $loop_count = $loop_limit;
     }
+    
 
     echo "Episode-Count: " . $episode_count . "\n";
     echo "Loop-Count: " . $loop_count . "\n";
