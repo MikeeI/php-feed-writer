@@ -20,18 +20,18 @@
         echo "Page: " . $i . "\n";
         if($i==0)
         {
-            echo "First Run\n";
+            
             $json_show_episodes = getEpisodes($spotify_show_id , $limit , 0 );
         }
         else
         {
-            echo "$i Run\n";
             $temp = getEpisodes($spotify_show_id , $limit , $loop_count * $limit );
             $json_show_episodes = array_merge($json_show_episodes, $temp);
         }
 
     }   
     
+    var_dump($json_show_episodes[0]);
     //$json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
     //$json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , 10 , 10 ));
 
@@ -80,7 +80,7 @@
     }
 
     //echo $feed->toString();   
-    file_put_contents("feed2.rss", $feed->toString());
+    //file_put_contents("feed2.rss", $feed->toString());
     
     function getEpisodes($spotify_show_id, $limit,$offset)
     {
