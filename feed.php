@@ -3,46 +3,12 @@
     require 'vendor/autoload.php';
     use Lukaswhite\FeedWriter\Itunes;
 
-    $BEARER = getenv("BEARER");
-    echo $BEARER;
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
 
-    $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id . '/episodes?limit=50&market=es');
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-       'Accept: application/json',
-       'Content-Type: application/json',
-       'Authorization: Bearer ' . $BEARER
-       ));
+    $json_show = getShowInformation($spotify_show_id)
+    $json_show_episodes = getEpisodes($spotify_show_id,100,0)
 
-    $json = curl_exec($ch);
-    $info = curl_getinfo($ch);
-
-    var_dump($json);
-
-    $json_decoded = json_decode($json,true);
-    $json_decoded_items = $json_decoded['items'];
-
-    foreach($json_decoded_items as $item)
-    {
-        //echo $item["href"]."\n";
-    }
-
-    //Podcast Information
-    $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id."?market=es");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-       'Accept: application/json',
-       'Content-Type: application/json',
-       'Authorization: Bearer ' . $BEARER
-       ));
-
-    $json = curl_exec($ch);
-    $info = curl_getinfo($ch);
-
-    curl_close($ch);
-
-    $json_show = json_decode($json,true);
+    
 
     $feed = new Itunes( );
     $channel = $feed->addChannel( );
@@ -62,7 +28,7 @@
 
     $channel->addCategory()->term('News');
 
-    foreach($json_decoded_items as $episode)
+    foreach($json_show_episodes as $episode)
     {
         //echo $item["href"]."\n";
         //$temp_release_date = explode($json_show["release_date"],"-");
@@ -85,6 +51,48 @@
 
     echo $feed->toString();   
     file_put_contents("feed2.rss", $feed->toString());
+    
+    function getEpisodes($spotify_show_id, $limit,$offset)
+    {
+        $BEARER = getenv("BEARER");
+        
+        $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id . '/episodes?limit=50&market=es');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+           'Accept: application/json',
+           'Content-Type: application/json',
+           'Authorization: Bearer ' . $BEARER
+           ));
+
+        $json = curl_exec($ch);
+        $info = curl_getinfo($ch);
+
+        $json_decoded = json_decode($json,true);
+        $json_decoded_items = $json_decoded['items'];
+        return $json_decoded_items 
+    }
+
+    function getShowInformation($spotify_show_id)
+    {
+        //Podcast Information
+        $BEARER = getenv("BEARER");
+        
+        $ch = curl_init('https://api.spotify.com/v1/shows/' . $spotify_show_id."?market=es");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+           'Accept: application/json',
+           'Content-Type: application/json',
+           'Authorization: Bearer ' . $BEARER
+           ));
+
+        $json = curl_exec($ch);
+        $info = curl_getinfo($ch);
+        curl_close($ch);
+
+        $json_show = json_decode($json,true);
+        
+        return $json_show
+    }
 
     function sec2hms ($sec, $padHours = false) {
         $hms = "";
