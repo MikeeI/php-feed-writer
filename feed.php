@@ -29,6 +29,7 @@
     }   
     */
     $json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
+    array_push($json_show_episodes[0],getEpisodes($spotify_show_id , 10 , 10 ));
 
     var_dump($json_show_episodes);
        
