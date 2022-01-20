@@ -4,7 +4,7 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
-    $limit = 50;
+    $limit = 2;
 
     $json_show = getShowInformation($spotify_show_id);
     $json_show_episodes = [];
@@ -19,7 +19,7 @@
     }   
 
        
-    echo '<pre>' . var_export($json_show_episodes, true) . '</pre>';
+    //echo '<pre>' . var_export($json_show_episodes, true) . '</pre>';
     
 
     $feed = new Itunes( );
