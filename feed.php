@@ -32,7 +32,7 @@
     //$json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
     //$json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , 10 , 10 ));
 
-    var_dump($json_show_episodes);
+    //var_dump($json_show_episodes);
        
     //echo '<pre>' . var_export($json_show_episodes, true) . '</pre>';
     
@@ -77,7 +77,7 @@
     }
 
     //echo $feed->toString();   
-    //file_put_contents("feed2.rss", $feed->toString());
+    file_put_contents("feed2.rss", $feed->toString());
     
     function getEpisodes($spotify_show_id, $limit,$offset)
     {
