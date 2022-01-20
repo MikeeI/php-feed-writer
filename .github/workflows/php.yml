@@ -33,8 +33,6 @@ jobs:
       run: php feed.php
     - name: RSS Tidy
       run: cat feed2.rss | xq > feed.rss
-    - name: Ping Overcast
-      run: curl --data-urlencode "urlprefix=https://github.com/MikeeI/php-feed-writer/blob/master/feed.rss" https://overcast.fm/ping
     - name: CleanUp
       run: rm -rf token
     - name: Commit
@@ -46,3 +44,5 @@ jobs:
         git add -A
         git commit -am "Feed Generation"        
         git push
+    - name: Ping Overcast
+      run: curl --data-urlencode "urlprefix=https://github.com/MikeeI/php-feed-writer/blob/master/feed.rss" https://overcast.fm/ping
