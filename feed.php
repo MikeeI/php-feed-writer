@@ -12,7 +12,12 @@
     $episode_count = $json_show["total_episodes"];
     $loop_count = intdiv($episode_count, $limit)+1;
 
+    echo "Episode-Count: ".$episode_count."\n";
+    echo "Loop-Count: ".$episode_count."\n";
+
+
     for ($i = 0; $i < $loop_count; $i++) {
+        echo "Page: " . $i . "\n";
         $json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , $limit , $loop_count * $limit ));     
     }   
     
@@ -63,7 +68,7 @@
 
     }
 
-    echo $feed->toString();   
+    //echo $feed->toString();   
     //file_put_contents("feed2.rss", $feed->toString());
     
     function getEpisodes($spotify_show_id, $limit,$offset)
