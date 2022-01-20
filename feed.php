@@ -4,32 +4,20 @@
     use Lukaswhite\FeedWriter\Itunes;
 
     $spotify_show_id="4rOoJ6Egrf8K2IrywzwOMk";
-    $limit = 2;
+    $limit = 50;
 
     $json_show = getShowInformation($spotify_show_id);
     $json_show_episodes = [];
     
     $episode_count = $json_show["total_episodes"];
     $loop_count = intdiv($episode_count, $limit)+1;
-    $loop_count = 5;
 
-    /*
     for ($i = 0; $i < $loop_count; $i++) {
-        //echo "The number is: $i <\n>";
-        if($i==0)
-        {
-            $json_show_episodes = getEpisodes($spotify_show_id , $limit , $i*$limit );
-        }
-        else
-        {
-            array_push($json_show_episodes[0],getEpisodes($spotify_show_id , $limit , $i*$limit ));
-
-        }
-        
+        $json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , $limit , $loop_count * $limit ));     
     }   
-    */
-    $json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
-    $json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , 10 , 10 ));
+    
+    //$json_show_episodes = getEpisodes($spotify_show_id , 10 , 0 );
+    //$json_show_episodes = array_merge($json_show_episodes,getEpisodes($spotify_show_id , 10 , 10 ));
 
     var_dump($json_show_episodes);
        
