@@ -36,6 +36,7 @@ jobs:
     - name: CleanUp
       run: rm -rf token
     - name: Commit
+      continue-on-error: true
       run: |
         git pull origin master
         git push origin master
