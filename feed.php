@@ -23,7 +23,7 @@
         $temp_episodes = getEpisodes($spotify_show_id , $limit , $i * $limit );
         for($j = 0; $j < count($temp_episodes); $j++)
         {
-            json_show_episodes[] = $temp_episodes[$j];
+            $json_show_episodes[] = $temp_episodes[$j];
             echo $temp_episodes[$j]["duration_ms"]."\n";
         }
         
