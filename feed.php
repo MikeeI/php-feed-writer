@@ -20,16 +20,26 @@
     for ($i = 0; $i < $loop_count; $i++) {
         echo "Page: " . $i . "\n";
         
-        $temp_episodes = getEpisodes($spotify_show_id , $limit , $i * $limit );
-        echo "temp_episodes: " . gettype($temp_episodes). "\n";
-        echo "json_show_episodes: " . gettype($json_show_episodes). "\n";
-        
-        //var_dump($temp_episodes[$j]);
-
-        for($j = 0; $j < count($temp_episodes); $j++)
+        if($i == 0)
         {
-            $json_show_episodes = array_push($json_show_episodes, $temp_episodes[$j]);
-        }     
+            $json_show_episodes = getEpisodes($spotify_show_id , $limit , $i * $limit );
+        }
+        else
+        {
+            $temp_episodes = getEpisodes($spotify_show_id , $limit , $i * $limit );
+            echo "temp_episodes: " . gettype($temp_episodes). "\n";
+            echo "json_show_episodes: " . gettype($json_show_episodes). "\n";
+            for($j = 0; $j < count($temp_episodes); $j++)
+            {
+                $json_show_episodes = array_push($json_show_episodes, $temp_episodes[$j]);
+            }     
+        }
+        
+       
+        
+        //var_dump($temp_episodes[0]);
+
+        
 
     }   
     
