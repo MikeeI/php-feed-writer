@@ -68,8 +68,8 @@
 
     }
 
-    echo $feed->toString();   
-    //file_put_contents("feed2.rss", $feed->toString());
+    //echo $feed->toString();   
+    file_put_contents("feed2.rss", $feed->toString());
 
     
     function getEpisodes($spotify_show_id, $limit,$offset)
