@@ -54,7 +54,7 @@
         //$release_date = $temp_release_date[2]."-".$temp_release_date[
         $channel
             ->addItem()
-            ->title(htmlspecialchars($episode["name"], ENT_XML1, 'UTF-8'))
+            ->title(htmlspecialchars($episode["name"], ENT_QUOTES))
             ->author(htmlspecialchars($json_show["publisher"]))
             ->subtitle(htmlspecialchars($json_show["description"], ENT_XML1, 'UTF-8'))
             ->duration(sec2hms(substr_replace($episode["duration_ms"], "", -3)))
@@ -77,7 +77,7 @@
     }
 
     //echo $feed->toString();
-    file_put_contents("feed2.rss", $feed->toString());
+    file_put_contents("feed2.rss", htmlspecialchars($feed->toString(), ENT_XML1, 'UTF-8'));
 
     function getEpisodes($spotify_show_id, $limit, $offset)
     {
