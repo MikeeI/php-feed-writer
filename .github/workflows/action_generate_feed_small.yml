@@ -1,7 +1,7 @@
 name: Generate RSS Feed Small
 on:
-  push:
-    branches: [ master ]
+  #push:
+  #  branches: [ master ]
 jobs:
   generate_feed:
     runs-on: ubuntu-latest
