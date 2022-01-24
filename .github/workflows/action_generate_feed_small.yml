@@ -1,5 +1,4 @@
-name: PHP Execution
-
+name: Generate RSS Feed Small
 on:
   push:
     branches: [ master ]
